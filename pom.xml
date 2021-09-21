@@ -17,21 +17,30 @@
 	</parent>
 	
 	<distributionManagement>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<url>http://173.212.244.32:31500/repository/maven-snapshots/</url>
-			<!--url>${snapshots.url}</url-->
-		</snapshotRepository>
-		<repository>
-			<id>releases</id>
-			<url>http://173.212.244.32:31500/repository/maven-releases/</url>
-			<!--url>${internal.url}</url-->
-		</repository>
-	</distributionManagement>
+   	   <snapshotRepository>
+               <id>maven-snapshots</id>
+               <url>http://173.212.244.32:31500/repository/maven-snapshots/</url>
+           </snapshotRepository>
+           <repository>
+              <id>maven-releases</id>
+              <url>http://173.212.244.32:31500/repository/maven-releases/</url>
+           </repository>
+        </distributionManagement>
 	
-	<prerequisites>
+	<repositories>
+           <repository>
+              <id>confluent</id>
+              <url>https://packages.confluent.io/maven/</url>
+    	   </repository>
+	   <!--repository>
+             <id>maven-group</id>
+             <url>http://173.212.244.32:31500/repository/maven-group/</url>
+           </repository-->
+        </repositories>
+	
+	<!--prerequisites>
 		<maven>3.3.3</maven>
-	</prerequisites>
+	</prerequisites-->
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
