@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.omurchu.pom</groupId>
+	<artifactId>java-parent-pom</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
+
+	<name>omurchu-java-parent</name>
+	<description>Spring Boot Parent</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.1.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	
+	<distributionManagement>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>http://173.212.244.32:31500/repository/maven-snapshots/</url>
+			<!--url>${snapshots.url}</url-->
+		</snapshotRepository>
+		<repository>
+			<id>releases</id>
+			<url>http://173.212.244.32:31500/repository/maven-releases/</url>
+			<!--url>${internal.url}</url-->
+		</repository>
+	</distributionManagement>
+	
+	<prerequisites>
+		<maven>3.3.3</maven>
+	</prerequisites>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+
+		<!-- Springboot -->
+		<springboot.version>2.3.7.RELEASE</springboot.version>
+		<spring.version>5.2.1.RELEASE</spring.version>
+
+		<!--Streams & Kafka-->
+		<spring-cloud-stream.version>3.0.3.RELEASE</spring-cloud-stream.version>
+		<spring-cloud-stream-schema.version>2.2.1.RELEASE</spring-cloud-stream-schema.version>
+		<kafka-streams-avro-serde.version>5.3.0</kafka-streams-avro-serde.version>
+		<avro.version>1.8.2</avro.version>
+		<avro-serializer.version>4.0.0</avro-serializer.version>
+		<kafka-schema-registry-client.version>5.3.0</kafka-schema-registry-client.version>
+
+		<!--  General -->
+		<antrun.version>1.8</antrun.version>
+		<build-helper.version>1.8</build-helper.version>
+		<joda.version>2.6</joda.version>
+		<swagger.version>2.9.2</swagger.version>
+		<lombok.version>1.18.4</lombok.version>
+		<gitlog.version>1.13.2</gitlog.version>
+		<springfox.version>2.7.0</springfox.version>
+		<log4j.version>2.5</log4j.version>
+		<model-mapper.version>0.7.5</model-mapper.version>
+		<json.version>20140107</json.version>	
+		<jackson-databind.version>2.9.3</jackson-databind.version>
+		<apache-commons.version>3.5</apache-commons.version>
+		
+		<!-- Integration -->
+		<camel.version>2.21.0</camel.version>
+		<camel-boot.version>2.17.0</camel-boot.version>
+		<camel-core.version>2.23.0</camel-core.version>
+		<camel-stream.version>2.15.1</camel-stream.version>
+		<camel-jms.version>2.23.0</camel-jms.version>
+		<camel-xmljson.version>2.23.0</camel-xmljson.version>
+		<camel-jackson.version>2.9.2</camel-jackson.version>
+		<camel-json.version>2.10.0</camel-json.version>
+		<camel-starter.version>2.17.0</camel-starter.version>
+		
+		<!-- Testing -->
+		<failsafe.version>2.22.0</failsafe.version>
+		<schema-registry-mock-junit5.version>2.0.0</schema-registry-mock-junit5.version>
+		<junit-surefire.version>1.3.2</junit-surefire.version>
+		<xmlunit.version>1.5</xmlunit.version>
+		<surefire.version>2.22.0</surefire.version>
+		<jacoco.version>0.7.5.201505241946</jacoco.version>
+		<junit-jupiter.version>5.3.2</junit-jupiter.version>
+		<camel-test.version>2.23.0</camel-test.version>
+		<mokito-core.version>2.23.0</mokito-core.version>
+		<mokito-junit-jupiter.version>2.23.0</mokito-junit-jupiter.version>
+		<mock-server.version>5.3.0</mock-server.version>
+		<cucumber.version>1.2.5</cucumber.version>
+		
+		<!--  Db -->
+		<h2.version>1.4.195</h2.version>
+		
+		<!-- Plugins -->
+		<!--Maven-->
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven-deploy.version>2.8.2</maven-deploy.version>
+		<maven-enforcer.version>1.0.1</maven-enforcer.version>
+		<maven-shade.version>2.4.3</maven-shade.version>
+		<maven-failsafe.version>2.19.1</maven-failsafe.version>
+		<maven-jar.version>3.0.2</maven-jar.version>
+		<maven-compiler.version>3.5.1</maven-compiler.version>
+		<maven-clean.version>3.0.0</maven-clean.version>
+		<maven-install.version>2.5.2</maven-install.version>
+		<maven-resources.version>2.7</maven-resources.version>
+		<maven-copy-rename.version>1.0</maven-copy-rename.version>
+		<maven-surefire.version>2.22.0</maven-surefire.version>
+		<maven-build-helper-maven-plugin.version>3.0.0</maven-build-helper-maven-plugin.version>
+		
+		<!--Docker & Jib -->
+		<docker.image.prefix>omurchu</docker.image.prefix>
+		<docker.image.suffix></docker.image.suffix>
+		<docker.image.tag>${project.version}${docker.image.suffix}</docker.image.tag>
+		<dockerhub.package>services</dockerhub.package>
+		<dockerhub.url>docker.io</dockerhub.url>
+
+		<!--omurchu.base.image>${env.DOCKERHUBURL}${dockerhub.package.prefix}/omurchu/tools/java/oracle/8:release</omurchu.base.image-->
+		<image.name>${docker.image.prefix}/${dockerhub.package}/${project.name}:${docker.image.tag}</image.name>
+		<image.name.fq>${dockerhub.url}/${image.name}</image.name.fq>
+
+		
+		<!-- Service Limits,Resources, Values etc -->
+		<!--service.user>javaservice</service.user>
+		<service.user.uid>1500</service.user.uid>
+		<service.jar>maven/${project.artifactId}-${project.version}.jar}</service.jar>
+		<service.resource.request.cpu>0.5</service.resource.request.cpu>
+		<service.resource.request.mem>256mi</service.resource.request.mem>
+		<service.resource.limit.cpu>1</service.resource.limit.cpu>
+		<service.resource.limit.mem>500Mi</service.resource.limit.mem-->
+
+	</properties>
+	
+	<!--  Profiles -->
+	<profiles>
+		<!-- Build Service -->
+		<profile>
+			<id>jenkins-service-build</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<version>3.0.0</version>
+						<executions>
+							<execution>
+								<id>parse-version</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>parse-version</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.1</version>
+						<executions>
+							<execution>
+								<id>run</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<echo>Major: ${parsedVersion.majorVersion}</echo>
+										<echo>Minor: ${parsedVersion.minorVersion}</echo>
+										<echo>Incremental: ${parsedVersion.incrementalVersion}</echo>
+										<echo>Qualifier: ${parsedVersion.qualifier}</echo>
+										<echo>BuildNumber: ${parsedVersion.buildNumber}</echo>
+										<echo>nextMajorVersion: ${parsedVersion.nextMajorVersion}</echo>
+										<echo>nextMinorVersion: ${parsedVersion.nextMinorVersion}</echo>
+										<echo>nextIncrementalVersion: ${parsedVersion.nextIncrementalVersion}</echo>
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>versions-maven-plugin</artifactId>
+						<version>2.5</version>
+						<executions>
+							<execution>
+								<id>set</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>set</goal>
+								</goals>
+								<configuration>
+									<newVersion>${parsedVersion.majorVersion}.${parsedVersion.nextMinorVersion}-SNAPSHOT</newVersion>
+								</configuration>
+							</execution>
+							<execution>
+								<id>commit</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>commit</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>com.google.cloud.tools</groupId>
+						<artifactId>jib-maven-plugin</artifactId>
+						<version>3.1.3</version>
+						<configuration>
+							<to>
+								<image>${image.name}</image>
+							</to>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>deploy</phase>
+								<goals>
+									<goal>build</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-deploy-plugin</artifactId>
+						<version>${maven-deploy-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>default-deploy</id>
+								<phase>install</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+	<id>jenkins-lib-build</id>
+	<build>
+	  <plugins>
+              <plugin>
+                 <groupId>org.codehaus.mojo</groupId>
+                 <artifactId>build-helper-maven-plugin</artifactId>
+                 <version>3.0.0</version>
+                 <executions>
+                    <execution>
+                      <id>parse-version</id>
+                      <phase>deploy</phase>
+                      <goals>
+                        <goal>parse-version</goal>
+                      </goals>
+                    </execution>
+                 </executions>
+              </plugin>
+              <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-antrun-plugin</artifactId>
+                 <version>1.1</version>
+                 <executions>
+                   <execution>
+                      <id>run</id>
+                      <phase>deploy</phase>
+                      <goals>
+                         <goal>run</goal>
+                      </goals>
+                      <configuration>
+                        <tasks>
+                           <echo>Major: ${parsedVersion.majorVersion}</echo>
+                           <echo>Minor: ${parsedVersion.minorVersion}</echo>
+                           <echo>Incremental: ${parsedVersion.incrementalVersion}</echo>
+                           <echo>Qualifier: ${parsedVersion.qualifier}</echo>
+                           <echo>BuildNumber: ${parsedVersion.buildNumber}</echo>
+                           <echo>nextMajorVersion: ${parsedVersion.nextMajorVersion}</echo>
+                           <echo>nextMinorVersion: ${parsedVersion.nextMinorVersion}</echo>
+                           <echo>nextIncrementalVersion: ${parsedVersion.nextIncrementalVersion}</echo>
+                 	 </tasks>
+                      </configuration>
+                    </execution>
+                 </executions>
+              </plugin>
+              <plugin>
+                 <groupId>org.codehaus.mojo</groupId>
+                 <artifactId>versions-maven-plugin</artifactId>
+                 <version>2.5</version>
+                 <executions>
+                  <execution>
+                     <id>set</id>
+                     <phase>deploy</phase>
+                     <goals>
+                       <goal>set</goal>
+                     </goals>
+                     <configuration>
+                       <newVersion>${parsedVersion.majorVersion}.${parsedVersion.nextMinorVersion}-SNAPSHOT</newVersion>
+                    </configuration>
+                  </execution>
+                  <execution>
+                    <id>commit</id>
+		    <phase>deploy</phase>
+                       <goals>
+                         <goal>commit</goal>
+                       </goals>
+                     </execution>
+                  </executions>
+              </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${failsafe.version}</version>
+                <configuration>
+                    <includes>
+                        <include>**/*IT</include>
+                    </includes>
+                </configuration>
+            </plugin>
+            <plugin>
+               <artifactId>maven-deploy-plugin</artifactId>
+	       <version>${maven-deploy-plugin.version}</version>
+               <executions>
+                  <execution>
+                     <id>default-deploy</id>
+                     <phase>install</phase>
+                     <goals>
+                        <goal>deploy</goal>
+                     </goals>
+                  </execution>
+               </executions>
+            </plugin>
+          </plugins>
+	</build>
+      </profile>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-deploy-plugin</artifactId>
+						<version>${maven-deploy-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>default-deploy</id>
+								<phase>install</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Testing -->
+		<profile>
+			<id>component</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugin</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>${maven-surefire.version}</version>
+						<configuration>
+							<failIfNoTests>false</failIfNoTests>
+							<includes>
+								<include>**/component/Test*.java</include>
+							</includes>
+						</configuration>
+					</plugin>				
+				</plugins>
+			</build>		
+		</profile>
+		<profile>
+			<id>contract</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugin</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>${maven-surefire.version}</version>
+						<configuration>
+							<failIfNoTests>false</failIfNoTests>
+							<includes>
+								<include>**/contract/Test*.java</include>
+							</includes>
+						</configuration>
+					</plugin>				
+				</plugins>
+			</build>		
+		</profile>
+		<profile>
+        	<id>cit</id>
+	        <!-- <activation>
+	            <activeByDefault>true</activeByDefault>
+	        </activation>
+	        <build>
+	            <plugins>
+	                <plugin>
+	                    <groupId>org.apache.maven.plugins</groupId>
+	                    <artifactId>maven-invoker-plugin</artifactId>
+	                    <version>3.1.0</version>
+	                    <configuration>
+	                        <debug>true</debug>
+	                        <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+	                        <pomIncludes>
+	                            <pomInclude>*/pom.xml</pomInclude>
+	                        </pomIncludes>
+	                        <postBuildHookScript>verify</postBuildHookScript>
+	                        <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
+	                        <settingsFile>src/it/settings.xml</settingsFile>
+	                        <goals>
+	                            <goal>clean</goal>
+	                            <goal>test-compile</goal>
+	                        </goals>
+	                    </configuration>
+	                    <executions>
+	                        <execution>
+	                            <id>integration-test</id>
+	                            <goals>
+	                                <goal>install</goal>
+	                                <goal>integration-test</goal>
+	                                <goal>verify</goal>
+	                            </goals>
+	                        </execution>
+	                    </executions>
+	                </plugin>
+	            </plugins>
+	        </build> -->
+	    </profile>
+	</profiles>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.google.cloud.tools</groupId>
+					<artifactId>jib-maven-plugin</artifactId>
+					<version>3.1.3</version>
+					<configuration>
+						<to>
+							<image>${docker.registry.url}/${docker.image.prefix}/${docker.image.name}</image>
+						</to>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>deploy</phase>
+							<goals>
+								<goal>build</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${maven-build-helper-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>parse-version</id>
+							<phase>validate</phase>
+							<goals>
+								<goal>parse-version</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.1</version>
+					<executions>
+						<execution>
+							<id>run</id>
+							<phase>validate</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<tasks>
+									<echo>Major: ${parsedVersion.majorVersion}</echo>
+									<echo>Minor: ${parsedVersion.minorVersion}</echo>
+									<echo>Incremental: ${parsedVersion.incrementalVersion}</echo>
+									<echo>Qualifier: ${parsedVersion.qualifier}</echo>
+									<echo>BuildNumber: ${parsedVersion.buildNumber}</echo>
+									<echo>nextMajorVersion: ${parsedVersion.nextMajorVersion}</echo>
+									<echo>nextMinorVersion: ${parsedVersion.nextMinorVersion}</echo>
+									<echo>nextIncrementalVersion: ${parsedVersion.nextIncrementalVersion}</echo>
+								</tasks>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>2.5</version>
+					<executions>
+						<execution>
+							<id>set</id>
+							<phase>validate</phase>
+							<goals>
+								<goal>set</goal>
+							</goals>
+							<configuration>
+								<newVersion>${parsedVersion.majorVersion}.${parsedVersion.nextMinorVersion}-SNAPSHOT</newVersion>
+							</configuration>
+						</execution>
+						<execution>
+							<id>commit</id>
+							<phase>validate</phase>
+							<goals>
+								<goal>commit</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${springboot.version}</version>
+					<executions>
+						<execution>
+							<id>repackage</id>
+							<goals>
+								<goal>repackage</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>build-info</id>
+							<goals>
+								<goal>build-info</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${maven-jacoco.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>report</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources.version}</version>
+					<configuration>
+						<delimiters>
+							<delimiter>@</delimiter>
+							<useDefaultDelimeters>false</useDefaultDelimeters>
+						</delimiters>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven-surefire.version}</version>
+					<configuration>
+						<failIfNoTests>false</failIfNoTests>
+						<includes>
+							<include>**/unit/*Tests.java</include>
+						</includes>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${failsafe.version}</version>
+					<configuration>
+						<includes>
+							<include>**/Integration/*IT</include>
+						</includes>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${maven-deploy-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>default-deploy</id>
+							<phase>install</phase>
+							<goals>
+								<goal>deploy</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>	
+		</pluginManagement>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<!-- If we want to use a different version for a certain dependency than the one managed by Boot, we need to declare it here -->
+				<!-- Import dependency management from Spring Boot -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${springboot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-stream-dependencies</artifactId>
+				<version>${spring-cloud-stream.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>http://repo.spring.io/libs-snapshot-local</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>http://repo.spring.io/libs-milestone-local</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-releases</id>
+			<name>Spring Releases</name>
+			<url>http://repo.spring.io/release</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>http://repo.spring.io/libs-snapshot-local</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>http://repo.spring.io/libs-milestone-local</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-releases</id>
+			<name>Spring Releases</name>
+			<url>http://repo.spring.io/libs-release-local</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+</project>
