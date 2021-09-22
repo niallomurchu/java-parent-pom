@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.omurchu.pom</groupId>
 	<artifactId>java-parent-pom</artifactId>
-	<version>0.5-SNAPSHOT</version>
+	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>omurchu-java-parent</name>
@@ -104,7 +104,7 @@
 		<dockerhub.url>docker.io</dockerhub.url>
 
 		<!--omurchu.base.image>${env.DOCKERHUBURL}${dockerhub.package.prefix}/omurchu/tools/java/oracle/8:release</omurchu.base.image-->
-		<image.name>${docker.image.prefix}/${project.artifacId}:${docker.image.tag}</image.name>
+		<image.name>${docker.image.prefix}/${project.artifactId}:${docker.image.tag}</image.name>
 		<image.name.fq>${dockerhub.url}/${image.name}</image.name.fq>
 
 		
