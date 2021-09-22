@@ -15,29 +15,7 @@
 		<version>2.2.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	
-	<distributionManagement>
-   	   <snapshotRepository>
-               <id>maven-snapshots</id>
-               <url>http://173.212.244.32:31500/repository/maven-snapshots/</url>
-           </snapshotRepository>
-           <repository>
-              <id>maven-releases</id>
-              <url>http://173.212.244.32:31500/repository/maven-releases/</url>
-           </repository>
-        </distributionManagement>
-	
-	<repositories>
-           <repository>
-              <id>confluent</id>
-              <url>https://packages.confluent.io/maven/</url>
-    	   </repository>
-	   <!--repository>
-             <id>maven-group</id>
-             <url>http://173.212.244.32:31500/repository/maven-group/</url>
-           </repository-->
-        </repositories>
-	
+		
 	<!--prerequisites>
 		<maven>3.3.3</maven>
 	</prerequisites-->
@@ -635,8 +613,45 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	
+	<distributionManagement>
+   	   	<snapshotRepository>
+               		<id>maven-snapshots</id>
+               		<url>http://173.212.244.32:31500/repository/maven-snapshots/</url>
+           	</snapshotRepository>
+           	<repository>
+              		<id>maven-releases</id>
+              		<url>http://173.212.244.32:31500/repository/maven-releases/</url>
+           	</repository>
+        </distributionManagement>
 
 	<repositories>
+		<repository>
+              		<id>confluent</id>
+              		<url>https://packages.confluent.io/maven/</url>
+    	   	</repository>
+		<repository>
+              		<id>maven-snapshots</id>
+			<name>Maven Snapshots</name>
+              		<url>http://173.212.244.32:31500/repository/maven-snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+           	</repository>
+	   	<repository>
+              		<id>maven-releases</id>
+			<name>Maven Releases</name>
+              		<url>http://173.212.244.32:31500/repository/maven-releases/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+           	</repository>
 		<repository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
