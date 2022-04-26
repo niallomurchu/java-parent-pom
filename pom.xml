@@ -632,9 +632,9 @@
               		<url>https://packages.confluent.io/maven/</url>
     	   	</repository>
 		<repository>
-              		<id>maven-snapshots</id>
+              		<id>snapshots</id>
 			<name>Maven Snapshots</name>
-              		<url>http://173.212.244.32:31500/repository/maven-snapshots/</url>
+              		<url>http://173.212.244.32:32060/repository/maven-snapshots/</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
@@ -643,9 +643,9 @@
 			</releases>
            	</repository>
 	   	<repository>
-              		<id>maven-releases</id>
+              		<id>releases</id>
 			<name>Maven Releases</name>
-              		<url>http://173.212.244.32:31500/repository/maven-releases/</url>
+              		<url>http://173.212.244.32:32060/repository/maven-releases/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
