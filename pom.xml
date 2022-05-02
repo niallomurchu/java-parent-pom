@@ -140,14 +140,21 @@
 						<artifactId>maven-antrun-plugin</artifactId>
 						<version>1.1</version>
 						<executions>
-							<execution>
-								<id>run</id>
-								<phase>validate</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<tasks>
+							<execution>  
+							   <id>copy-app-set-system-variables</id>  
+							   <phase>validate</phase>  
+							   <configuration>
+								<tasks>
+								    <exec executable="env">
+									<env key="MAJOR_VERSION" value=${parsedVersion.majorVersion}/>
+									<env key="MINOR_VERSION" value=${parsedVersion.minorVersion}/>
+									<env key="INCREMENTAL_VERSION" value=${parsedVersion.incrementalVersion}/>
+									<env key="NEXT_MAJOR_VERSION" value=${parsedVersion.nextMajorVersion}/>
+									<env key="NEXT_MINOR_VERSION" value=${parsedVersion.nextMinorVersion}/>    
+									<env key="NEXT_INCR_VERSION" value=${parsedVersion.nextIncrementalVersion}/>
+									<env key="BUILD_VERSION" value=${parsedVersion.buildNumber}/>
+								    </exec>
+								    <tasks>
 										<echo>Major: ${parsedVersion.majorVersion}</echo>
 										<echo>Minor: ${parsedVersion.minorVersion}</echo>
 										<echo>Incremental: ${parsedVersion.incrementalVersion}</echo>
@@ -156,9 +163,13 @@
 										<echo>nextMajorVersion: ${parsedVersion.nextMajorVersion}</echo>
 										<echo>nextMinorVersion: ${parsedVersion.nextMinorVersion}</echo>
 										<echo>nextIncrementalVersion: ${parsedVersion.nextIncrementalVersion}</echo>
-									</tasks>
-								</configuration>
-							</execution>
+								     </tasks>
+								</tasks>
+							    </configuration> 
+							   <goals>  
+							    	<goal>run</goal>  
+							   </goals>  
+						  </execution>
 						</executions>
 					</plugin>
 					<plugin>
