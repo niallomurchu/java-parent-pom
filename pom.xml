@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.omurchu.pom</groupId>
 	<artifactId>java-parent-pom</artifactId>
-	<version>null.null</version>
+	<version>0.6</version>
 	<packaging>pom</packaging>
 
 	<name>omurchu-java-parent</name>
@@ -153,7 +153,6 @@
 					<executions>
 						<execution>
 							<id>parse-version</id>
-							<phase>validate</phase>
 							<goals>
 								<goal>parse-version</goal>
 							</goals>
@@ -167,7 +166,6 @@
 					<executions>
 						<execution>
 							<id>set</id>
-							<phase>validate</phase>
 							<goals>
 								<goal>set</goal>
 							</goals>
@@ -178,7 +176,6 @@
 						</execution>
 						<execution>
 							<id>commit</id>
-							<phase>validate</phase>
 							<goals>
 								<goal>commit</goal>
 							</goals>
