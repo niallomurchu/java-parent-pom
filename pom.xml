@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.omurchu.pom</groupId>
 	<artifactId>java-parent-pom</artifactId>
-	<version>null.null</version>
+	<version>0.2</version>
 	<packaging>pom</packaging>
 
 	<name>omurchu-java-parent</name>
