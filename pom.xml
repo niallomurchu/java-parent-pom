@@ -291,7 +291,6 @@
 				<executions>
 					<execution>
 						<id>copy-app-set-system-variables</id>
-						<phase>validate</phase>
 						<configuration>
 							<target>
 								<exec executable="env">
@@ -325,7 +324,6 @@
 				<executions>
 					<execution>
 						<id>set</id>
-						<phase>validate</phase>
 						<goals>
 							<goal>set</goal>
 						</goals>
@@ -337,7 +335,6 @@
 					</execution>
 					<execution>
 						<id>commit</id>
-						<phase>validate</phase>
 						<goals>
 							<goal>commit</goal>
 						</goals>
@@ -355,7 +352,6 @@
 				</configuration>
 				<executions>
 					<execution>
-						<phase>deploy</phase>
 						<goals>
 							<goal>build</goal>
 						</goals>
