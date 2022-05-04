@@ -294,7 +294,6 @@
 						<phase>validate</phase>
 						<configuration>
 							<target>
-								<property name="MAJOR_VERSION" value="${parsedVersion.majorVersion}"/>
 								<exec executable="env">
 									<!--suppress UnresolvedMavenProperty -->
 									<env key="MAJOR_VERSION" value="${parsedVersion.majorVersion}"/>
