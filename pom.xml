@@ -139,7 +139,7 @@
 					</configuration>
 					<executions>
 						<execution>
-							<phase>deploy</phase>
+							<phase>install</phase>
 							<goals>
 								<goal>build</goal>
 							</goals>
@@ -153,7 +153,7 @@
 					<executions>
 						<execution>
 							<id>parse-version</id>
-							<phase>deploy</phase>
+							<phase>install</phase>
 							<goals>
 								<goal>parse-version</goal>
 							</goals>
@@ -167,7 +167,7 @@
 					<executions>
 						<execution>
 							<id>set</id>
-							<phase>deploy</phase>
+							<phase>install</phase>
 							<goals>
 								<goal>set</goal>
 							</goals>
