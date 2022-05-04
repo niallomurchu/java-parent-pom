@@ -139,7 +139,6 @@
 					</configuration>
 					<executions>
 						<execution>
-							<phase>install</phase>
 							<goals>
 								<goal>build</goal>
 							</goals>
@@ -284,6 +283,7 @@
 				<executions>
 					<execution>
 						<id>copy-app-set-system-variables</id>
+						<phase>install</phase>
 						<configuration>
 							<target>
 								<exec executable="env">
